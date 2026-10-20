@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ralph.exe</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #090909;
+    color: #e5e5e5;
+    font-family: "Courier New", monospace;
+    line-height: 1.7;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 0;
+    border-bottom: 1px solid #292929;
+    font-size: 13px;
+}
+
+.logo {
+    font-weight: bold;
+    color: white;
+}
+
+.logo span {
+    color: #666;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+a {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: white;
+}
+
+.hero {
+    padding: 100px 0 85px;
+}
+
+.status {
+    color: #888;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-family: Arial, sans-serif;
+    font-size: clamp(45px, 9vw, 85px);
+    letter-spacing: -5px;
+    line-height: 1;
+    margin: 0 0 25px;
+}
+
+h1 span {
+    color: #666;
+}
+
+.intro {
+    color: #999;
+    max-width: 600px;
+    font-size: 14px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.tag {
+    border: 1px solid #292929;
+    padding: 5px 10px;
+    font-size: 11px;
+    color: #aaa;
+}
+
+section {
+    padding: 40px 0;
+    border-top: 1px solid #292929;
+}
+
+h2 {
+    font-size: 14px;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.number {
+    color: #666;
+    margin-right: 10px;
+}
+
+p {
+    color: #999;
+    font-size: 13px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 35px;
+}
+
+.quote {
+    border-left: 2px solid #555;
+    padding-left: 18px;
+    color: #ccc;
+    font-size: 13px;
+    align-self: start;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.card {
+    background: #101010;
+    border: 1px solid #292929;
+    padding: 20px;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.card:hover {
+    border-color: #666;
+    transform: translateY(-2px);
+}
+
+.card h3 {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 12px 0 5px;
+}
+
+.card p {
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skills span {
+    background: #101010;
+    border: 1px solid #292929;
+    padding: 7px 12px;
+    color: #aaa;
+    font-size: 12px;
+}
+
+.note {
+    margin-top: 20px;
+    border: 1px dashed #333;
+    padding: 15px;
+    color: #777;
+    font-size: 12px;
+}
+
+footer {
+    border-top: 1px solid #292929;
+    padding: 25px 0;
+    color: #666;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+@media (max-width: 600px) {
+    .hero {
+        padding: 70px 0;
+    }
+
+    h1 {
+        letter-spacing: -3px;
+    }
+
+    .about-grid,
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        gap: 10px;
+        font-size: 11px;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+    <a href="#" class="logo">ralph<span>.exe</span></a>
+
+    <nav>
+        <a href="#about">about</a>
+        <a href="#interests">interests</a>
+        <a href="#toolkit">toolkit</a>
+    </nav>
+</header>
+
+<main>
+
+<div class="hero">
+    <div class="status">[ STATUS: BUILDING SOMETHING ]</div>
+
+    <h1>
+        curious mind.<br>
+        <span>built from scratch.</span>
+    </h1>
+
+    <p class="intro">
+        I'm a solo dev who likes making things, breaking things,
+        and figuring out why they work. Mostly games, code,
+        hardware, and whatever interesting problem I get stuck
+        on next.
+    </p>
+
+    <div class="tags">
+        <span class="tag">SOLO GAME DEV</span>
+        <span class="tag">CODING</span>
+        <span class="tag">ELECTRONICS</span>
+        <span class="tag">ALWAYS EXPERIMENTING</span>
+    </div>
+</div>
+
+<section id="about">
+    <h2><span class="number">01 /</span> about me</h2>
+
+    <div class="about-grid">
+        <div>
+            <p>
+                I like building projects myself, from the first idea
+                to the part where it finally works. I'm interested
+                in how software and hardware fit together, not just
+                using stuff that already exists.
+            </p>
+
+            <p>
+                I spend time experimenting with game development,
+                programming, multiplayer systems, physics, and
+                small tools. If something seems possible to make,
+                there's a decent chance I'll try making it.
+            </p>
+        </div>
+
+        <div class="quote">
+            "the best way to understand a thing is to try building it."
+        </div>
+    </div>
+</section>
+
+<section id="interests">
+    <h2><span class="number">02 /</span> things i'm into</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="number">01 — GAME DEVELOPMENT</div>
+            <h3>worlds, mechanics & weird ideas</h3>
+            <p>
+                Making games, testing physics, working on multiplayer,
+                and trying to turn ideas into something playable.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="number">02 — PROGRAMMING</div>
+            <h3>code that actually does stuff</h3>
+            <p>
+                Python and C++ for projects, experiments, little
+                utilities, and learning how things work under the hood.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="number">03 — ELECTRONICS</div>
+            <h3>hardware & tinkering</h3>
+            <p>
+                Interested in electronics, computers, calculators,
+                Raspberry Pi projects, and getting devices to do more.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="number">04 — MAKING THINGS</div>
+            <h3>learn by messing around</h3>
+            <p>
+                Trying tools, solving annoying bugs, experimenting,
+                and learning by actually building things.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="toolkit">
+    <h2><span class="number">03 /</span> current toolkit</h2>
+
+    <div class="skills">
+        <span>Godot</span>
+        <span>GDScript</span>
+        <span>C++</span>
+        <span>Python</span>
+        <span>HTML / CSS</span>
+        <span>VS Code</span>
+        <span>Blender</span>
+        <span>Raspberry Pi</span>
+        <span>Windows</span>
+        <span>Linux experiments</span>
+    </div>
+
+    <div class="note">
+        CURRENT MODE: learn something new → build a thing →
+        encounter 47 bugs → fix most of them → repeat.
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <span>ralph.exe // independent creator</span>
+    <span>made with curiosity & a questionable amount of debugging</span>
+    <span>© <span id="year"></span></span>
+</footer>
+
+</div>
+
+<script>
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
+
+</body>
+</html>
