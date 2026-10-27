@@ -1,377 +1,519 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ralph.exe</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ralph.exe</title>
 
-<style>
-* {
-    box-sizing: border-box;
-}
+    <meta name="description" content="Personal portfolio of a solo developer and electronics enthusiast.">
 
-html {
-    scroll-behavior: smooth;
-}
+    <style>
+        :root {
+            --background: #080808;
+            --surface: #101010;
+            --border: #252525;
+            --text: #e5e5e5;
+            --muted: #777;
+            --accent: #ffffff;
+        }
 
-body {
-    margin: 0;
-    background: #090909;
-    color: #e5e5e5;
-    font-family: "Courier New", monospace;
-    line-height: 1.7;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.container {
-    width: 90%;
-    max-width: 900px;
-    margin: auto;
-}
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px 0;
-    border-bottom: 1px solid #292929;
-    font-size: 13px;
-}
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: "Courier New", monospace;
+            line-height: 1.7;
+        }
 
-.logo {
-    font-weight: bold;
-    color: white;
-}
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-.logo span {
-    color: #666;
-}
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(8, 8, 8, 0.95);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
 
-nav {
-    display: flex;
-    gap: 20px;
-}
+        nav {
+            max-width: 1000px;
+            margin: auto;
+            padding: 18px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
 
-a {
-    color: #888;
-    text-decoration: none;
-    transition: color 0.2s;
-}
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: -1px;
+            white-space: nowrap;
+        }
 
-a:hover {
-    color: white;
-}
+        .logo span {
+            color: var(--muted);
+        }
 
-.hero {
-    padding: 100px 0 85px;
-}
+        .nav-links {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
 
-.status {
-    color: #888;
-    font-size: 11px;
-    letter-spacing: 2px;
-    margin-bottom: 25px;
-}
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
 
-h1 {
-    font-family: Arial, sans-serif;
-    font-size: clamp(45px, 9vw, 85px);
-    letter-spacing: -5px;
-    line-height: 1;
-    margin: 0 0 25px;
-}
+        .nav-links a:hover {
+            color: var(--accent);
+        }
 
-h1 span {
-    color: #666;
-}
+        main {
+            max-width: 850px;
+            margin: auto;
+            padding: 0 24px;
+        }
 
-.intro {
-    color: #999;
-    max-width: 600px;
-    font-size: 14px;
-}
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border);
+        }
 
-.tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 25px;
-}
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-.tag {
-    border: 1px solid #292929;
-    padding: 5px 10px;
-    font-size: 11px;
-    color: #aaa;
-}
+        .label {
+            color: var(--muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
 
-section {
-    padding: 40px 0;
-    border-top: 1px solid #292929;
-}
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            line-height: 1.1;
+            letter-spacing: -4px;
+            margin-bottom: 24px;
+        }
 
-h2 {
-    font-size: 14px;
-    font-weight: normal;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 25px;
-}
+        h1 span {
+            color: var(--muted);
+        }
 
-.number {
-    color: #666;
-    margin-right: 10px;
-}
+        .hero p {
+            max-width: 550px;
+            color: #999;
+            font-size: 1rem;
+        }
 
-p {
-    color: #999;
-    font-size: 13px;
-}
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 32px;
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
 
-.about-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 35px;
-}
+        .dot {
+            width: 7px;
+            height: 7px;
+            background: #8a8a8a;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #555;
+        }
 
-.quote {
-    border-left: 2px solid #555;
-    padding-left: 18px;
-    color: #ccc;
-    font-size: 13px;
-    align-self: start;
-}
+        h2 {
+            font-size: 1.8rem;
+            letter-spacing: -1px;
+            margin-bottom: 28px;
+        }
 
-.cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-}
+        h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
 
-.card {
-    background: #101010;
-    border: 1px solid #292929;
-    padding: 20px;
-    transition: border-color 0.2s, transform 0.2s;
-}
+        .section-text {
+            color: #999;
+            max-width: 680px;
+        }
 
-.card:hover {
-    border-color: #666;
-    transform: translateY(-2px);
-}
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
 
-.card h3 {
-    font-size: 14px;
-    font-weight: normal;
-    margin: 12px 0 5px;
-}
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 24px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
 
-.card p {
-    font-size: 12px;
-    margin-bottom: 0;
-}
+        .card:hover {
+            border-color: #555;
+            transform: translateY(-3px);
+        }
 
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
+        .card p {
+            color: #999;
+            font-size: 0.9rem;
+        }
 
-.skills span {
-    background: #101010;
-    border: 1px solid #292929;
-    padding: 7px 12px;
-    color: #aaa;
-    font-size: 12px;
-}
+        .tag {
+            display: inline-block;
+            color: #aaa;
+            border: 1px solid #333;
+            padding: 3px 8px;
+            font-size: 0.7rem;
+            margin: 14px 5px 0 0;
+        }
 
-.note {
-    margin-top: 20px;
-    border: 1px dashed #333;
-    padding: 15px;
-    color: #777;
-    font-size: 12px;
-}
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
 
-footer {
-    border-top: 1px solid #292929;
-    padding: 25px 0;
-    color: #666;
-    font-size: 11px;
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-}
+        .project-number {
+            color: #555;
+            font-size: 0.8rem;
+        }
 
-@media (max-width: 600px) {
-    .hero {
-        padding: 70px 0;
-    }
+        .project-status {
+            color: #aaa;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid #333;
+            padding: 3px 8px;
+            white-space: nowrap;
+        }
 
-    h1 {
-        letter-spacing: -3px;
-    }
+        .project-details {
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            color: #888;
+            font-size: 0.8rem;
+        }
 
-    .about-grid,
-    .cards {
-        grid-template-columns: 1fr;
-    }
+        .project-details div {
+            margin-bottom: 5px;
+        }
 
-    nav {
-        gap: 10px;
-        font-size: 11px;
-    }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
 
-    footer {
-        flex-direction: column;
-    }
-}
-</style>
+        .skill {
+            border: 1px solid var(--border);
+            padding: 10px 16px;
+            color: #aaa;
+            font-size: 0.85rem;
+            background: var(--surface);
+        }
+
+        footer {
+            max-width: 850px;
+            margin: auto;
+            padding: 28px 24px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            color: #555;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                justify-content: flex-start;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            h1 {
+                letter-spacing: -2px;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 
 <body>
-<div class="container">
 
 <header>
-    <a href="#" class="logo">ralph<span>.exe</span></a>
-
     <nav>
-        <a href="#about">about</a>
-        <a href="#interests">interests</a>
-        <a href="#toolkit">toolkit</a>
+        <a href="#home" class="logo">ralph<span>.exe</span></a>
+
+        <div class="nav-links">
+            <a href="#about">about</a>
+            <a href="#interests">interests</a>
+            <a href="#projects">projects</a>
+            <a href="#toolkit">toolkit</a>
+        </div>
     </nav>
 </header>
 
 <main>
 
-<div class="hero">
-    <div class="status">[ STATUS: BUILDING SOMETHING ]</div>
+    <!-- HOME -->
 
-    <h1>
-        curious mind.<br>
-        <span>built from scratch.</span>
-    </h1>
+    <section class="hero" id="home">
+        <div class="label">personal portfolio / 2026</div>
 
-    <p class="intro">
-        I'm a solo dev who likes making things, breaking things,
-        and figuring out why they work. Mostly games, code,
-        hardware, and whatever interesting problem I get stuck
-        on next.
-    </p>
+        <h1>
+            curious mind.<br>
+            <span>built from scratch.</span>
+        </h1>
 
-    <div class="tags">
-        <span class="tag">SOLO GAME DEV</span>
-        <span class="tag">CODING</span>
-        <span class="tag">ELECTRONICS</span>
-        <span class="tag">ALWAYS EXPERIMENTING</span>
-    </div>
-</div>
+        <p>
+            solo developer and electronics enthusiast.
+            i like building things, breaking them, figuring out why
+            they broke, and making something better.
+        </p>
 
-<section id="about">
-    <h2><span class="number">01 /</span> about me</h2>
-
-    <div class="about-grid">
-        <div>
-            <p>
-                I like building projects myself, from the first idea
-                to the part where it finally works. I'm interested
-                in how software and hardware fit together, not just
-                using stuff that already exists.
-            </p>
-
-            <p>
-                I spend time experimenting with game development,
-                programming, multiplayer systems, physics, and
-                small tools. If something seems possible to make,
-                there's a decent chance I'll try making it.
-            </p>
+        <div class="status">
+            <span class="dot"></span>
+            currently building things
         </div>
+    </section>
 
-        <div class="quote">
-            "the best way to understand a thing is to try building it."
+
+    <!-- ABOUT -->
+
+    <section id="about">
+        <div class="label">01 / about</div>
+
+        <h2>a little about me.</h2>
+
+        <p class="section-text">
+            i'm a solo developer interested in programming,
+            game development, electronics and figuring out how
+            technology works.
+
+            i enjoy making my own tools and experimenting with
+            hardware and software. most of my projects start with
+            an idea and a question: what if i built this myself?
+
+            i'm still learning, but that's kind of the point.
+        </p>
+    </section>
+
+
+    <!-- INTERESTS -->
+
+    <section id="interests">
+        <div class="label">02 / interests</div>
+
+        <h2>things i mess with.</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>game development</h3>
+                <p>
+                    making games, experimenting with physics,
+                    multiplayer systems and game mechanics.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>electronics</h3>
+                <p>
+                    microcontrollers, sensors, circuits,
+                    wireless communication and hardware experiments.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>programming</h3>
+                <p>
+                    writing code, learning new languages and
+                    building software from the ground up.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>computer systems</h3>
+                <p>
+                    operating systems, networking, Linux,
+                    automation and learning how computers work.
+                </p>
+            </div>
+
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="interests">
-    <h2><span class="number">02 /</span> things i'm into</h2>
 
-    <div class="cards">
+    <!-- CURRENT PROJECTS -->
 
-        <div class="card">
-            <div class="number">01 — GAME DEVELOPMENT</div>
-            <h3>worlds, mechanics & weird ideas</h3>
-            <p>
-                Making games, testing physics, working on multiplayer,
-                and trying to turn ideas into something playable.
-            </p>
+    <section id="projects">
+        <div class="label">03 / current projects</div>
+
+        <h2>currently building.</h2>
+
+        <p class="section-text" style="margin-bottom: 28px;">
+            a collection of things i'm working on, experimenting
+            with or planning to build.
+        </p>
+
+        <div class="cards">
+
+            <!-- HOME-NET -->
+
+            <article class="card">
+
+                <div class="project-header">
+                    <span class="project-number">PROJECT_001</span>
+                    <span class="project-status">in development</span>
+                </div>
+
+                <h3>HOME-NET</h3>
+
+                <p>
+                    a diy home monitoring and notification system
+                    built around a raspberry pi 5 and a network of
+                    esp32 microcontrollers.
+                </p>
+
+                <p style="margin-top: 12px;">
+                    the pi acts as the central server, collecting
+                    events from wireless devices and turning them
+                    into useful notifications.
+                </p>
+
+                <div class="project-details">
+                    <div>↳ central server: raspberry pi 5</div>
+                    <div>↳ devices: esp32 microcontrollers</div>
+                    <div>↳ communication: wi-fi / mqtt</div>
+                    <div>↳ goal: local monitoring and notifications</div>
+                </div>
+
+                <div>
+                    <span class="tag">python</span>
+                    <span class="tag">raspberry pi</span>
+                    <span class="tag">esp32</span>
+                    <span class="tag">networking</span>
+                    <span class="tag">electronics</span>
+                </div>
+
+            </article>
+
+
+            <!-- FUTURE PROJECT -->
+
+            <article class="card">
+
+                <div class="project-header">
+                    <span class="project-number">PROJECT_002</span>
+                    <span class="project-status">ongoing</span>
+                </div>
+
+                <h3>game development</h3>
+
+                <p>
+                    experimenting with game mechanics, physics,
+                    multiplayer systems and building games
+                    independently.
+                </p>
+
+                <div class="project-details">
+                    <div>↳ engine: godot</div>
+                    <div>↳ focus: gameplay and physics</div>
+                    <div>↳ goal: build and publish my own games</div>
+                </div>
+
+                <div>
+                    <span class="tag">godot</span>
+                    <span class="tag">gdscript</span>
+                    <span class="tag">game design</span>
+                </div>
+
+            </article>
+
         </div>
+    </section>
 
-        <div class="card">
-            <div class="number">02 — PROGRAMMING</div>
-            <h3>code that actually does stuff</h3>
-            <p>
-                Python and C++ for projects, experiments, little
-                utilities, and learning how things work under the hood.
-            </p>
+
+    <!-- TOOLKIT -->
+
+    <section id="toolkit">
+        <div class="label">04 / toolkit</div>
+
+        <h2>stuff i use.</h2>
+
+        <div class="skills">
+            <span class="skill">C++</span>
+            <span class="skill">Python</span>
+            <span class="skill">GDScript</span>
+            <span class="skill">HTML / CSS</span>
+            <span class="skill">Godot</span>
+            <span class="skill">VS Code</span>
+            <span class="skill">Raspberry Pi</span>
+            <span class="skill">ESP32</span>
+            <span class="skill">GitHub</span>
+            <span class="skill">Blender</span>
         </div>
-
-        <div class="card">
-            <div class="number">03 — ELECTRONICS</div>
-            <h3>hardware & tinkering</h3>
-            <p>
-                Interested in electronics, computers, calculators,
-                Raspberry Pi projects, and getting devices to do more.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="number">04 — MAKING THINGS</div>
-            <h3>learn by messing around</h3>
-            <p>
-                Trying tools, solving annoying bugs, experimenting,
-                and learning by actually building things.
-            </p>
-        </div>
-
-    </div>
-</section>
-
-<section id="toolkit">
-    <h2><span class="number">03 /</span> current toolkit</h2>
-
-    <div class="skills">
-        <span>Godot</span>
-        <span>GDScript</span>
-        <span>C++</span>
-        <span>Python</span>
-        <span>HTML / CSS</span>
-        <span>VS Code</span>
-        <span>Blender</span>
-        <span>Raspberry Pi</span>
-        <span>Windows</span>
-        <span>Linux experiments</span>
-    </div>
-
-    <div class="note">
-        CURRENT MODE: learn something new → build a thing →
-        encounter 47 bugs → fix most of them → repeat.
-    </div>
-</section>
+    </section>
 
 </main>
 
+
 <footer>
-    <span>ralph.exe // independent creator</span>
-    <span>made with curiosity & a questionable amount of debugging</span>
-    <span>© <span id="year"></span></span>
+    <span>ralph.exe // personal portfolio</span>
+    <span>© <span id="year"></span> // built from scratch</span>
 </footer>
 
-</div>
-
 <script>
-document.getElementById("year").textContent =
-    new Date().getFullYear();
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
 </script>
 
 </body>
